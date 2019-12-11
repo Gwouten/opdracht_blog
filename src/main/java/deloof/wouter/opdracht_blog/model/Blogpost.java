@@ -17,7 +17,10 @@ public class Blogpost {
     private int id;
     @NotNull
     @NotBlank
+    @Column(columnDefinition="LONGTEXT")
     private String content;
+    @NotBlank
+    private String title;
     @NotNull
     @Size(min = 4, max = 20)
     private String username;
@@ -52,6 +55,18 @@ public class Blogpost {
     }
 
     public LocalDate getDate() {
+        return DATE;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public LocalDate getDATE() {
         return DATE;
     }
 }

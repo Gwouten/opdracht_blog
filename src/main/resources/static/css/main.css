@@ -1,0 +1,100 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Calistoga', cursive;
+    margin: 0;
+}
+
+/*Site header*/
+.site__title {
+    width: 100%;
+    background: url("../img/email-pattern.png");
+    padding: 1rem;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.site__title h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+/*Blogpost*/
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 3rem auto;
+}
+
+.blogpost {
+    padding: 2rem;
+    width: 60%;
+}
+
+.blogpost:nth-child(even) {
+    margin-left: 20%;
+}
+
+.blogpost + .blogpost {
+    border-top: 1px solid #dddddd;
+}
+
+.blogpost .blogpost__title {
+    font-size: 2.4rem;
+}
+
+.blogpost .blogpost__post-date {
+    font-size: 0.8rem;
+    color: #555;
+    display: inline-block;
+    border-bottom: 1px solid #555;
+    padding: 0 0 .2rem 0;
+    margin-bottom: .5rem;
+}
+
+.blogpost .blogpost__author {}
+.blogpost .blogpost__content {
+    margin: 1rem 0 0 0;
+    font-size: 1rem;
+}
+
+/*Buttons*/
+.btn__wrapper{
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: .5rem .75rem;
+    color: #eeeeee;
+    background-color: #000000;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Calistoga', cursive;
+    border-radius: 5px;
+}
+
+/* Forms */
+.input {
+    padding: 0 2rem;
+    display: flex;
+}
+
+.input + .input {
+    margin-top: .5rem;
+}
+
+.text__label {
+    width: 100px;
+}
+
+
