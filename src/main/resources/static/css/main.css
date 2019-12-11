@@ -81,6 +81,8 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     font-family: 'Calistoga', cursive;
     border-radius: 5px;
+    border: none;
+    font-size: 1rem;
 }
 
 /* Forms */
@@ -95,6 +97,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .text__label {
     width: 100px;
+}
+
+textarea {
+    width: 500px;
+    height: 250px;
 }
 
 
