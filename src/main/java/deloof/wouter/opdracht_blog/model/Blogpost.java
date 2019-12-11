@@ -1,9 +1,9 @@
 package deloof.wouter.opdracht_blog.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,7 +22,7 @@ public class Blogpost {
     @Size(min = 4, max = 20)
     private String username;
     @NotNull
-    private LocalDate date;
+    private final LocalDate DATE = LocalDate.now();
 
     public Blogpost() {
     }
@@ -52,10 +52,6 @@ public class Blogpost {
     }
 
     public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
+        return DATE;
     }
 }

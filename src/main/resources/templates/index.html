@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+
+<h1 class="site__title">Blog</h1>
+
+<div class="blog">
+
+    <div class="blogpost" th:each="post : ${posts}">
+        <h2 class="blogpost__title" th:text="${post.content}"></h2>
+        <h4 class="blogpost__author"></h4>
+        <h6 class="blogpost__post-date"></h6>
+        <p  class="blogpost__content"></p>
+    </div>
+
+</div>
+
+</body>
+</html>
