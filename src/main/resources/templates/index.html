@@ -14,7 +14,7 @@
 
 <div class="form__Wrapper js-form-wrapper">
     <div class="container">
-
+        <button id="js-toggle-form" class="btn btn--fixed">Display form</button>
         <form th:action="@{~/new}" method="POST" th:object="${newPost}">
 
             <div class="input">
@@ -61,6 +61,20 @@
 </div>
 
 <script>
+
+    // Toggle form
+    var formToggle = document.querySelector("#js-toggle-form");
+    var formContainer = document.querySelector(".js-form-wrapper");
+    var formActiveClassName = "form-active";
+    formToggle.addEventListener('click', function(){
+        if( formContainer.classList.contains(formActiveClassName) ){
+            formContainer.classList.remove(formActiveClassName);
+        } else {
+            formContainer.classList.add(formActiveClassName);
+        };
+    });
+
+    // Confirm dialog box
     var deleteBtn = document.querySelector(".js-btn-delete");
     if (deleteBtn) {
         deleteBtn.addEventListener("click", function (e) {

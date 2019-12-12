@@ -107,6 +107,16 @@ h1, h2, h3, h4, h5, h6 {
     background-color: dodgerblue;
 }
 
+.btn.btn--fixed {
+    position: fixed;
+    left: 0;
+    top: 250px;
+    padding-left: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    text-transform: uppercase;
+}
+
 /* Forms */
 .input {
     padding: 0 2rem;
