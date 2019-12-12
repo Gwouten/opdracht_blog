@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Blog</title>
+    <title>Blogalicious</title>
     <link href="https://fonts.googleapis.com/css?family=Calistoga|Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{~/css/main.css}">
 </head>
@@ -12,40 +12,65 @@
     <h1>Blog</h1>
 </header>
 
-<div class="container">
+<div class="form__Wrapper js-form-wrapper">
+    <div class="container">
 
-    <form th:action="@{~/new}" method="POST" th:object="${newPost}">
-        <div class="input">
-            <label for="username" class="text__label" th:text="#{username}"></label>
-            <input id="username" type="text" class="input__text" th:field="*{username}">
-        </div>
-        <div class="input">
-            <label for="title" class="text__label" th:text="#{title}"></label>
-            <input id="title" type="text" class="input__text" th:field="*{title}">
-        </div>
-        <div class="input">
-            <p class="text__label" th:text="#{content}"></p>
-            <textarea name="post_content" id="post_content" th:field="*{content}"></textarea>
-        </div>
-        <div class="input">
-            <input class="btn" type="submit" th:value="#{submit}">
-        </div>
-    </form>
+        <form th:action="@{~/new}" method="POST" th:object="${newPost}">
 
+            <div class="input">
+                <p class="error__text" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                <label for="username" class="text__label" th:text="#{username}"></label>
+                <input id="username" type="text" class="input__text" th:field="*{username}">
+            </div>
+
+            <div class="input">
+                <p class="error__text" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+                <label for="title" class="text__label" th:text="#{title}"></label>
+                <input id="title" type="text" class="input__text" th:field="*{title}">
+            </div>
+
+            <div class="input">
+                <p class="error__text" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
+                <p class="text__label" th:text="#{content}"></p>
+                <textarea name="post_content" id="post_content" th:field="*{content}"></textarea>
+            </div>
+
+            <div class="input">
+                <input class="btn btn--blue" type="submit" th:value="#{submit}">
+            </div>
+
+        </form>
+
+    </div>
 </div>
 
 <div class="container">
 
     <div class="blogpost" th:each="post : ${posts}">
-        <p  class="blogpost__post-date" th:text="|Posted on: ${post.date} by ${post.username}|"></p>
-        <h2 class="blogpost__title" th:text="${post.title}"></h2>
-        <p  class="blogpost__content" th:text="${post.content}"></p>
-        <div class="btn__wrapper">
-            <a class="btn" th:href="@{~/delete/{id}(id = ${post.id})}" th:text="#{delete}"></a>
+        <div class="blogpost__img"></div>
+        <div class="blogpost__main">
+            <p  class="blogpost__post-date" th:text="|#{postedDate} ${#temporals.format(post.date, 'dd-MM-yyyy')} #{postedAt} ${#temporals.format(post.date, 'HH:mm')} #{postedBy} ${post.username}|"></p>
+            <h2 class="blogpost__title" th:text="${post.title}"></h2>
+            <p  class="blogpost__content" th:text="${post.content}"></p>
+            <div class="btn__wrapper">
+                <a class="btn js-btn-delete" th:href="@{~/delete/{id}(id = ${post.id})}" th:text="#{delete}"></a>
+            </div>
         </div>
     </div>
 
 </div>
+
+<script>
+    var deleteBtn = document.querySelector(".js-btn-delete");
+    if (deleteBtn) {
+        deleteBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (window.confirm("Are you sure you want to delete this message?")) {
+                window.open(e.target.href, "_self");
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

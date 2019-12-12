@@ -22,7 +22,7 @@ public class IndexController {
 
     @ModelAttribute("posts")
     public Iterable<Blogpost> getAllPosts() {
-        return dao.findAll();
+        return dao.findChronological();
     };
 
     @ModelAttribute("newPost")

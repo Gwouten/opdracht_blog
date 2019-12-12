@@ -31,18 +31,29 @@ h1, h2, h3, h4, h5, h6 {
 
 /*Blogpost*/
 .container {
-    width: 90%;
+    width: 70%;
     max-width: 1200px;
     margin: 3rem auto;
 }
 
 .blogpost {
+    display: flex;
     padding: 2rem;
-    width: 60%;
+    /*width: 60%;*/
 }
 
-.blogpost:nth-child(even) {
-    margin-left: 20%;
+/*.blogpost:nth-child(even) {*/
+/*    margin-left: 20%;*/
+/*}*/
+
+.blogpost:nth-child(odd) .blogpost__img{
+    display: none;
+}
+
+.blogpost__img {
+    background-color: black;
+    width: 20px;
+    margin-right: 5rem;
 }
 
 .blogpost + .blogpost {
@@ -83,6 +94,17 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px;
     border: none;
     font-size: 1rem;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.btn:hover {
+    box-shadow: 0 .25rem .25rem rgba(0,0,0,.4);
+    transform: translateY(-1px);
+}
+
+.btn.btn--blue {
+    background-color: dodgerblue;
 }
 
 /* Forms */
@@ -96,12 +118,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text__label {
-    width: 100px;
+    width: 150px;
 }
 
 textarea {
     width: 500px;
     height: 250px;
+    font-family: 'Lato', sans-serif;
 }
 
+/*Errors*/
+
+.error {
+    background-color: lightcoral;
+    padding: .25rem;
+}
+
+.error .error__text {
+    color: red;
+    width: 100%;
+}
 

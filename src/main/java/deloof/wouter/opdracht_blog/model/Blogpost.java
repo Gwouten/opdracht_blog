@@ -1,13 +1,11 @@
 package deloof.wouter.opdracht_blog.model;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Blogpost {
@@ -22,12 +20,13 @@ public class Blogpost {
     @NotBlank
     private String title;
     @NotNull
-    @Size(min = 4, max = 20)
+    @Size(min = 4, max = 20, message="{emptyUser}")
     private String username;
     @NotNull
-    private final LocalDate DATE = LocalDate.now();
+    private LocalDateTime date;
 
     public Blogpost() {
+        this.date = LocalDateTime.now();
     }
 
     public int getId() {
@@ -54,10 +53,6 @@ public class Blogpost {
         this.username = username;
     }
 
-    public LocalDate getDate() {
-        return DATE;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -66,7 +61,11 @@ public class Blogpost {
         this.title = title;
     }
 
-    public LocalDate getDATE() {
-        return DATE;
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 }
